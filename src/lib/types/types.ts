@@ -8,4 +8,7 @@ export interface IGetMobiles {
   price:number;
 }
 
+export interface IDeleteMobiles {
+  id: number;
+}
 
