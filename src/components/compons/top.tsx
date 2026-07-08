@@ -1,4 +1,6 @@
 import { Button } from "../ui/button"
+import { Input } from "../ui/input";
+import { Select } from "../ui/select";
 
 
 const Top = () => {
@@ -13,8 +15,10 @@ const Top = () => {
         </div>
         <Button className="text-white">+ Добавить телефон</Button>
       </div>
-      <div className="">
-
+      <div className="flex">
+        <Input />
+        <Select />
+        <Select />
       </div>
     </div>
   );
