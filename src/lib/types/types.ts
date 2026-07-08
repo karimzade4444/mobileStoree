@@ -1,4 +1,4 @@
-export interface IGetUsers {
+export interface IGetMobiles {
   id: number;
   logo: string;
   name: string;
@@ -7,3 +7,5 @@ export interface IGetUsers {
   title:string;
   price:number;
 }
+
+
