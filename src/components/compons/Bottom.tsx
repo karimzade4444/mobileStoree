@@ -16,7 +16,10 @@ const Bottom = ({ search }: ISearch) => {
   return (
     <div className=" grid grid-cols-2 place-items-center gap-10">
       {data?.map((el) => (
-        <div key={el.id} className="w-150 h-105 bg-input rounded-xl">
+        <div
+          key={el.id}
+          className="w-150 h-105 bg-input rounded-xl hadow shadow-primary"
+        >
           <div className="p-7 flex justify-between">
             <div>
               <img src={el.logo} alt="" className="w-10" />
