@@ -9,8 +9,10 @@ import {
 import FormInput from "./components/form/FormInput";
 import Top from "./components/compons/top";
 import Bottom from "./components/compons/Bottom";
+import { useState } from "react";
 
 const App = () => {
+  const [search, setSearch] = useState("");
   const { control, handleSubmit } = useForm<ICreateUserSchema>({
     resolver: zodResolver(createUserSchema),
   });
@@ -22,7 +24,7 @@ const App = () => {
   return (
     <div>
    <Top/>
-   <Bottom/>
+   <Bottom search={search}/>
     </div>
   );
 };
