@@ -32,7 +32,7 @@ const Top = () => {
       <div className=" mt-10 flex  w-full h-25 bg-card justify-center items-center rounded-xl shadow shadow-primary gap-15">
         <Input className="w-150 h-15" placeholder="Поиск..." />
         <Select>
-          {" "}
+        
           <SelectTrigger className="w-80 h-15!">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
