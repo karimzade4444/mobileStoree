@@ -8,6 +8,7 @@ import {
 } from "./lib/schemas/createUser";
 import FormInput from "./components/form/FormInput";
 import Top from "./components/compons/top";
+import Bottom from "./components/compons/Bottom";
 
 const App = () => {
   const { control, handleSubmit } = useForm<ICreateUserSchema>({
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <div>
    <Top/>
+   <Bottom/>
     </div>
   );
 };
