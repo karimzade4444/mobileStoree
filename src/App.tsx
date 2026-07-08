@@ -19,17 +19,7 @@ const App = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput control={control} name="login" />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => <Input {...field} />}
-        />
-        <Button type="submit" variant="outline">
-          create
-        </Button>
-      </form>
+   
     </div>
   );
 };
