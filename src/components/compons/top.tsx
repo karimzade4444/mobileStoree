@@ -1,9 +1,13 @@
+import { Button } from "../ui/button"
 
 
-const top = () => {
+const Top = () => {
   return (
-    <div>top</div>
+    <div>
+    <div><p>📱 Каталог телефонов</p><p>Управляйте вашей коллекцией смартфонов</p></div>
+     <Button>+ Добавить телефонов</Button>
+    </div>
   )
 }
 
-export default top
+export default Top
