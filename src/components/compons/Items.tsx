@@ -1,16 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../ui/button";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
-import { getMobiles } from "@/lib/api/api";
+import { deleteMobile, getMobiles } from "@/lib/api/api";
 
 interface ISearch {
   search: string;
 }
 
 const Items = ({ search }: ISearch) => {
+    const queryClient = useQueryClient();
   const { data } = useQuery({
     queryFn: () => getMobiles(search),
     queryKey: ["getMobiles", search],
+  });
+  const { mutate: deletingUser } = useMutation({
+    mutationFn: deleteMobile,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["getUsers"] });
+    },
   });
   return (
     <>
@@ -26,7 +33,7 @@ const Items = ({ search }: ISearch) => {
             <div className="flex justify-center items-center gap-5">
               <Eye className="text-blue-600 cursor-pointer hover:text-blue-600/50" />
               <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50" />
-              <Trash2 className="text-red-600 cursor-pointer hover:text-red-600/50" />
+              <Trash2 className="text-red-600 cursor-pointer hover:text-red-600/50" onClick={()=>deletingUser(el.id)} />
             </div>
           </div>
           <p className="text-primary text-3xl font-bold pl-7 ">{el.name}</p>
