@@ -7,7 +7,10 @@ import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "@/lib/api/api";
-import { createMobileSchema, type ICreateMobileSchema } from "@/lib/schemas/createMobile";
+import {
+  createMobileSchema,
+  type ICreateMobileSchema,
+} from "@/lib/schemas/createMobile";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 interface ICreateModal {
@@ -15,8 +18,17 @@ interface ICreateModal {
   setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
 }
 const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
-  const { control, handleSubmit, reset } = useForm<ICreateMobileSchema>({
+  const { control, handleSubmit, reset, clearErrors } = useForm<ICreateMobileSchema>({
     resolver: zodResolver(createMobileSchema),
+    defaultValues: {
+      brand: "",
+      name: "",
+      price: 0,
+      storage: 0, 
+      color: "",
+      logo: "",
+      title: "",
+    },
   });
 
   const queryClient = useQueryClient();
@@ -142,10 +154,14 @@ const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
             </div>
             <div className=" grid grid-cols-2 gap-10 mt-5">
               <Button
-              type="button"
+                type="button"
                 variant="outline"
                 className="h-10"
-                onClick={() => setOpenCreateModal(false)}
+                onClick={() => {
+                  reset();
+                  clearErrors();
+                  setOpenCreateModal(false)
+                }}
               >
                 Закрыть
               </Button>
