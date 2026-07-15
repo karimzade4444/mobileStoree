@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import type { ICreateMobiles } from "@/lib/types/types";
 import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createUsers } from "@/lib/api/api";
 
 interface ICreateModal {
   openCreateModal: boolean;
@@ -13,10 +15,25 @@ interface ICreateModal {
 const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
   const { control, handleSubmit } = useForm<ICreateMobiles>();
 
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: createUsers,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["getMobiles"],
+      });
+
+      setOpenCreateModal(false);
+    },
+  });
+const onSubmit = (data: ICreateMobiles) => {
+  mutate(data);
+};
   return (
     <>
       <Dialog open={openCreateModal} onOpenChange={setOpenCreateModal}>
-        <DialogContent>
+        <DialogContent onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Добавление телефона</DialogTitle>
           <div>
             <p className=" text-neutral-400">Бренд</p>
@@ -50,11 +67,19 @@ const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
           </div>
           <div>
             <p className=" text-neutral-400">Модель</p>
-            <FormInput control={control} name="name"  placeholder="Ввелите модель"/>
+            <FormInput
+              control={control}
+              name="name"
+              placeholder="Ввелите модель"
+            />
           </div>
           <div>
             <p className=" text-neutral-400">Цена ($)</p>
-            <FormInput control={control} name="price" />
+            <FormInput
+              control={control}
+              name="price"
+              placeholder="Введите цену"
+            />
           </div>
           <div>
             <p className=" text-neutral-400">Память (ГБ)</p>
@@ -88,21 +113,39 @@ const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
           </div>
           <div>
             <p className=" text-neutral-400">Цвет</p>
-            <FormInput control={control} name="color" />
+            <FormInput
+              control={control}
+              name="color"
+              placeholder="Введите цвет"
+            />
           </div>
           <div>
             <p className=" text-neutral-400">Лого</p>
-            <FormInput control={control} name="logo" />
+            <FormInput
+              control={control}
+              name="logo"
+              placeholder="https://..."
+            />
           </div>
           <div>
             <p className=" text-neutral-400">Описание</p>
-            <FormInput control={control} name="title" />
+            <FormInput
+              control={control}
+              name="title"
+              placeholder="Введите описание"
+            />
           </div>
           <div className=" grid grid-cols-2 gap-10">
-            <Button variant="outline" onClick={() => setOpenCreateModal(false)}>
+            <Button
+              variant="outline"
+              className="h-10"
+              onClick={() => setOpenCreateModal(false)}
+            >
               Закрыть
             </Button>
-            <Button variant="ghost">Добавить</Button>
+            <Button variant="ghost" className="h-10" type="submit">
+              Добавить
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
