@@ -51,11 +51,11 @@ import { useState } from "react";
                     setSelectedMobile(el);
                     setOpen(true);
                   }}
-                  className="text-blue-600 cursor-pointer hover:text-blue-600/50"
+                  className="text-blue-600 cursor-pointer hover:text-blue-600/50 duration-300"
                 />
-                <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50" />
+                <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50 duration-300" />
                 <Trash2
-                  className="text-red-600 cursor-pointer hover:text-red-600/50"
+                  className="text-red-600 cursor-pointer hover:text-red-600/50 duration-300"
                   onClick={() => deletingUser(el.id)}
                 />
               </div>
@@ -126,7 +126,7 @@ import { useState } from "react";
               </div>
             </div>
             <div className=" grid grid-cols-2 gap-5">
-              <Button variant="outline">Закрыть</Button>
+              <Button variant="outline" onClick={()=>setOpen(false)}>Закрыть</Button>
               <Button variant="ghost">Редактировать</Button>
             </div>
           </DialogContent>
