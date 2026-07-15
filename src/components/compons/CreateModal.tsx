@@ -1,6 +1,6 @@
 
 
-const CreateModal = () => {
+const CreateModal = ({openCreateModal, setOpenCreateModal}) => {
   return (
     <>
     
