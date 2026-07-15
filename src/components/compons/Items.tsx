@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../ui/button";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
 import { deleteMobile, getMobiles } from "@/lib/api/api";
+import ModalView from "./ModalView";
 
 interface ISearch {
   search: string;
@@ -52,6 +53,7 @@ const Items = ({ search }: ISearch) => {
           </div>
         </div>
       ))}
+      <ModalView/>
     </>
   );
 };
