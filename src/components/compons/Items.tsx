@@ -6,6 +6,7 @@
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import CreateModal from "./CreateModal";
+import EditModal from "./EditModal";
 
   interface ISearch {
     search: string;
@@ -27,6 +28,7 @@ import CreateModal from "./CreateModal";
   const Items = ({ search, openCreateModal, setOpenCreateModal }: ISearch) => {
     const [selectedMobile, setSelectedMobile] = useState<IMobile | null>(null);
     const [open, setOpen] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false)
     
       const queryClient = useQueryClient();
     const { data } = useQuery({
@@ -137,6 +139,7 @@ import CreateModal from "./CreateModal";
           </DialogContent>
         </Dialog>
         <CreateModal openCreateModal={openCreateModal} setOpenCreateModal={setOpenCreateModal}/>
+        <EditModal/>
       </>
     );
   };

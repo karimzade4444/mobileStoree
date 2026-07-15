@@ -23,5 +23,14 @@ export interface ICreateMobiles {
   brand: string;
 }
 
-
+export interface IUpdateMobiles {
+  id: number;
+  logo: string;
+  name: string;
+  storage: number;
+  color: string;
+  title: string;
+  price: number;
+  brand: string;
+}
 
