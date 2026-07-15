@@ -41,8 +41,8 @@ import type { IMobile } from "@/lib/types/types";
             className="w-150 h-105 bg-input rounded-xl hadow shadow-primary"
           >
             <div className="p-7 flex justify-between">
-              <div>
-                <img src={el.logo} alt="" className="w-10" />
+              <div className="h-15">
+                <img src={el.logo} alt="" className=" w-20 h-15 " />
               </div>
               <div className="flex justify-center items-center gap-5">
                 <Eye
@@ -94,7 +94,7 @@ import type { IMobile } from "@/lib/types/types";
             <DialogTitle>Информация о телефоне</DialogTitle>
             <div>
               <div className=" flex justify-center items-center flex-col">
-                <img src={selectedMobile?.logo} alt="" className="w-10" />
+                <img src={selectedMobile?.logo} alt="" className="w-15" />
                 <p className="pt-3 text-xl">{selectedMobile?.name}</p>
               </div>
               <div className=" grid grid-cols-2 gap-5 mt-7">
