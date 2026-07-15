@@ -1,5 +1,5 @@
 import { updateMobile } from "@/lib/api/api";
-import type { ICreateMobiles } from "@/lib/types/types";
+import type { ICreateMobiles, IMobile } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, type Dispatch, type SetStateAction } from "react";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 interface IEditModal {
   openEditModal: boolean;
   setOpenEditModal: Dispatch<SetStateAction<boolean>>;
-  mobile: ICreateMobiles & { id: number };
+  mobile: IMobile | null;
 }
 
 const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
@@ -38,6 +38,7 @@ const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
         queryClient.invalidateQueries({
           queryKey: ["getMobiles"],
         });
+        reset()
 
         setOpenEditModal(false);
       },

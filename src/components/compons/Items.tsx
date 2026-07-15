@@ -7,22 +7,14 @@ import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import CreateModal from "./CreateModal";
 import EditModal from "./EditModal";
+import type { IMobile } from "@/lib/types/types";
 
   interface ISearch {
     search: string;
     openCreateModal: boolean;
     setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
   }
-  interface IMobile {
-    id: number;
-    name: string;
-    price: number;
-    storage: number;
-    color: string;
-    title: string;
-    logo: string;
-    brand: string
-  }
+
 
   
   const Items = ({ search, openCreateModal, setOpenCreateModal }: ISearch) => {

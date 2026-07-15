@@ -34,3 +34,13 @@ export interface IUpdateMobiles {
   brand: string;
 }
 
+export interface IMobile {
+  id: number;
+  logo: string;
+  name: string;
+  storage: number;
+  color: string;
+  title: string;
+  price: number;
+  brand: string;
+}
