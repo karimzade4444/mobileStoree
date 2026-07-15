@@ -24,7 +24,7 @@ import CreateModal from "./CreateModal";
   const Items = ({ search }: ISearch) => {
     const [selectedMobile, setSelectedMobile] = useState<IMobile | null>(null);
     const [open, setOpen] = useState(false);
-    const [openCreateModal, setOpenCreateModal] = useState(false)
+    
       const queryClient = useQueryClient();
     const { data } = useQuery({
       queryFn: () => getMobiles(search),

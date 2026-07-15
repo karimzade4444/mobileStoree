@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { Button } from "../ui/button"
 import { Input } from "../ui/input";
 
@@ -10,14 +11,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+interface ICreateModal {
+  setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
+}
 
-
-const Top = () => {
-    const items = [
-      { label: "Light", value: "light" },
-      { label: "Dark", value: "dark" },
-      { label: "System", value: "system" },
-    ];
+const Top = ({  setOpenCreateModal }:ICreateModal) => {
+  const items = [
+    { label: "Light", value: "light" },
+    { label: "Dark", value: "dark" },
+    { label: "System", value: "system" },
+  ];
   return (
     <div className="p-15">
       <div className=" flex justify-between items-center ">
@@ -27,12 +30,11 @@ const Top = () => {
             Управляйте вашей коллекцией смартфонов
           </p>
         </div>
-        <Button className="text-white">+ Добавить телефон</Button>
+        <Button className="text-white" onClick={()=>setOpenCreateModal(true)}>+ Добавить телефон</Button>
       </div>
       <div className=" mt-10 flex  w-full h-25 bg-card justify-center items-center rounded-xl shadow shadow-primary gap-15">
         <Input className="w-150 h-15" placeholder="Поиск..." />
         <Select>
-        
           <SelectTrigger className="w-80 h-15!">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
@@ -64,6 +66,6 @@ const Top = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Top
