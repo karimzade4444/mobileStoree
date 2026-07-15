@@ -50,7 +50,7 @@ const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
           </div>
           <div>
             <p className=" text-neutral-400">Модель</p>
-            <FormInput control={control} name="name" />
+            <FormInput control={control} name="name"  placeholder="Ввелите модель"/>
           </div>
           <div>
             <p className=" text-neutral-400">Цена ($)</p>
