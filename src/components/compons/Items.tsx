@@ -133,7 +133,7 @@ import type { IMobile } from "@/lib/types/types";
           </DialogContent>
         </Dialog>
         <CreateModal openCreateModal={openCreateModal} setOpenCreateModal={setOpenCreateModal}/>
-        <EditModal openEditModal={openEditModal} setOpenEditModal={setOpenEditModal} mobile={setSelectedMobile}/>
+        <EditModal openEditModal={openEditModal} setOpenEditModal={setOpenEditModal} mobile={selectedMobile}/>
       </>
     );
   };
