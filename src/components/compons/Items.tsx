@@ -17,6 +17,7 @@ import { useState } from "react";
     color: string;
     title: string;
     logo: string;
+    brand: string
   }
 
   const Items = ({ search }: ISearch) => {
