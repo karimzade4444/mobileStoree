@@ -2,7 +2,7 @@
   import { Button } from "../ui/button";
   import { Eye, SquarePen, Trash2 } from "lucide-react";
   import { deleteMobile, getMobiles } from "@/lib/api/api";
-  import ModalView from "./ModalView";
+ 
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
 

@@ -6,6 +6,7 @@ export interface IGetMobiles {
   color: string;
   title:string;
   price:number;
+  brand:string
 }
 
 export interface IDeleteMobiles {
