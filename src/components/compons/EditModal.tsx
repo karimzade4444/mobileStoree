@@ -57,6 +57,7 @@ const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
       }
     }, [mobile, reset]);
     const onSubmit = (data: ICreateMobiles) => {
+     if(!mobile) return;
       updatingMobile({
         id: mobile.id,
         data,
