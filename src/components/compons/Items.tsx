@@ -45,7 +45,13 @@ import { useState } from "react";
                 <img src={el.logo} alt="" className="w-10" />
               </div>
               <div className="flex justify-center items-center gap-5">
-                <Eye onClick={()=>} className="text-blue-600 cursor-pointer hover:text-blue-600/50" />
+                <Eye
+                  onClick={() => {
+                    setSelectedMobile(el);
+                    setOpen(true);
+                  }}
+                  className="text-blue-600 cursor-pointer hover:text-blue-600/50"
+                />
                 <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50" />
                 <Trash2
                   className="text-red-600 cursor-pointer hover:text-red-600/50"
@@ -65,17 +71,53 @@ import { useState } from "react";
             <p className="pl-8 pr-8 pt-5 h-15">{el.title}</p>
             <div className=" flex justify-between p-8 items-center">
               <p className="text-4xl font-bold text-blue-700">{el.price} $</p>{" "}
-              <Button variant="ghost">Подробнее</Button>
+              <Button
+                onClick={() => {
+                  setSelectedMobile(el);
+                  setOpen(true);
+                }}
+                variant="ghost"
+              >
+                Подробнее
+              </Button>
             </div>
           </div>
         ))}
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent>
-            <DialogTitle>{selectedMobile?.name}</DialogTitle>
-
-            <img src={selectedMobile?.logo} />
-
-            <p>{selectedMobile?.title}</p>
+            <DialogTitle>Информация о телефоне</DialogTitle>
+            <div>
+              <div className=" flex justify-center items-center flex-col">
+                <img src={selectedMobile?.logo} alt="" className="w-10" />
+                <p className="pt-3 text-xl">{selectedMobile?.name}</p>
+              </div>
+              <div className=" grid grid-cols-2 gap-5 mt-7">
+                <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
+                  <p className="pl-3 pt-1 text-neutral-300">Цена:</p>
+                  <p className="text-2xl font-black text-chart-4 pl-3">
+                    {selectedMobile?.price} $
+                  </p>
+                </div>
+                <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
+                  <p className="pl-3 pt-1 text-neutral-300">Память:</p>
+                  <p className="text-2xl font-black  pl-3">
+                    {selectedMobile?.storage} $
+                  </p>
+                </div>
+                <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
+                  <p className="pl-3 pt-1 text-neutral-300">Цвет:</p>
+                  <p className="text-2xl font-black  pl-3">
+                    {selectedMobile?.color} $
+                  </p>
+                </div>
+                <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
+                  <p className="pl-3 pt-1 text-neutral-300">Бренд:</p>
+                  <p className="text-2xl font-black  pl-3">
+                    {selectedMobile?.storage} $
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <Button>Редактировать</Button>
           </DialogContent>
