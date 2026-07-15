@@ -31,7 +31,7 @@ import { useState } from "react";
     const { mutate: deletingUser } = useMutation({
       mutationFn: deleteMobile,
       onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["getUsers"] });
+        queryClient.invalidateQueries({ queryKey: ["getMobiles", search] });
       },
     });
     return (
