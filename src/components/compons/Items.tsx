@@ -95,32 +95,40 @@ import { useState } from "react";
               <div className=" grid grid-cols-2 gap-5 mt-7">
                 <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
                   <p className="pl-3 pt-1 text-neutral-300">Цена:</p>
-                  <p className="text-2xl font-black text-chart-4 pl-3">
+                  <p className="text-xl font-black text-chart-4 pl-3">
                     {selectedMobile?.price} $
                   </p>
                 </div>
                 <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
                   <p className="pl-3 pt-1 text-neutral-300">Память:</p>
-                  <p className="text-2xl font-black  pl-3">
+                  <p className="text-xl font-black  pl-3">
                     {selectedMobile?.storage} $
                   </p>
                 </div>
                 <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
                   <p className="pl-3 pt-1 text-neutral-300">Цвет:</p>
-                  <p className="text-2xl font-black  pl-3">
+                  <p className="text-xl font-black  pl-3">
                     {selectedMobile?.color} $
                   </p>
                 </div>
                 <div className=" h-15 bg-sidebar-primary  rounded-md shadow">
                   <p className="pl-3 pt-1 text-neutral-300">Бренд:</p>
-                  <p className="text-2xl font-black  pl-3">
-                    {selectedMobile?.storage} $
+                  <p className="text-xl font-black  pl-3">
+                    {selectedMobile?.brand} $
                   </p>
                 </div>
               </div>
+              <div className="mt-5">
+                <p className="p-2">Описание</p>
+                <div className="h-18 bg-sidebar-primary rounded-md shadow p-2">
+                  <p>{selectedMobile?.title}</p>
+                </div>
+              </div>
             </div>
-
-            <Button>Редактировать</Button>
+            <div className=" grid grid-cols-2 gap-5">
+              <Button>Закрыть</Button>
+              <Button>Редактировать</Button>
+            </div>
           </DialogContent>
         </Dialog>
       </>
