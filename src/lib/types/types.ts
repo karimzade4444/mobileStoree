@@ -13,3 +13,13 @@ export interface IDeleteMobiles {
   id: number;
 }
 
+export interface ICreateMobiles {
+  logo: string;
+  name: string;
+  storage: number;
+  color: string;
+  title: string;
+  price: number;
+  brand: string;
+}
+

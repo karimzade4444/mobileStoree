@@ -14,3 +14,7 @@ export const getMobiles = async (search: string): Promise<IGetMobiles[]> => {
 export const deleteMobile = async (id: number): Promise<IDeleteMobiles> => {
   return await axios.delete(`${api}/${id}`);
 };
+
+export const createUsers = async (data: ICreateMobile) => {
+  return (await axios.post(api, data)).data;
+};
