@@ -2,7 +2,6 @@ import type { Dispatch, SetStateAction } from "react";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { useForm } from "react-hook-form";
-import type { ICreateMobiles } from "@/lib/types/types";
 import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
