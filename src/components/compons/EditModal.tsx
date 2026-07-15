@@ -7,6 +7,8 @@ import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
 import { Button } from "../ui/button";
 import { useForm } from "react-hook-form";
+import { EditMobileSchema, type IEditMobileSchema } from "@/lib/schemas/editMobile";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 
 interface IEditModal {
@@ -17,7 +19,8 @@ interface IEditModal {
 
 const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
     const { control, handleSubmit, reset, clearErrors } =
-      useForm<ICreateMobiles>({
+      useForm<IEditMobileSchema>({
+        resolver: zodResolver(EditMobileSchema),
         defaultValues: {
           brand: "",
           name: "",
@@ -56,7 +59,7 @@ const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
         });
       }
     }, [mobile, reset]);
-    const onSubmit = (data: ICreateMobiles) => {
+    const onSubmit = (data: IEditMobileSchema) => {
      if(!mobile) return;
       updatingMobile({
         id: mobile.id,
