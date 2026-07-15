@@ -11,15 +11,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+
 interface ICreateModal {
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
   setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const Top = ({  setOpenCreateModal }:ICreateModal) => {
+const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
+
   const items = [
     { label: "Light", value: "light" },
-    { label: "Dark", value: "dark" },
-    { label: "System", value: "system" },
+    { label: "Dark", value: "dark" }
   ];
   return (
     <div className="p-15">
@@ -30,10 +33,17 @@ const Top = ({  setOpenCreateModal }:ICreateModal) => {
             Управляйте вашей коллекцией смартфонов
           </p>
         </div>
-        <Button className="text-white" onClick={()=>setOpenCreateModal(true)}>+ Добавить телефон</Button>
+        <Button className="text-white" onClick={() => setOpenCreateModal(true)}>
+          + Добавить телефон
+        </Button>
       </div>
       <div className=" mt-10 flex  w-full h-25 bg-card justify-center items-center rounded-xl shadow shadow-primary gap-15">
-        <Input className="w-150 h-15" placeholder="Поиск..." />
+        <Input
+          className="w-150 h-15"
+          placeholder="Поиск..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <Select>
           <SelectTrigger className="w-80 h-15!">
             <SelectValue placeholder="Theme" />
