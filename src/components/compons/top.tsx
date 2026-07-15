@@ -58,21 +58,7 @@ const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Select>
-          {" "}
-          <SelectTrigger className="w-80 h-15!">
-            <SelectValue placeholder="Theme" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+       
       </div>
     </div>
   );
