@@ -52,9 +52,13 @@ import type { IMobile } from "@/lib/types/types";
                   }}
                   className="text-blue-600 cursor-pointer hover:text-blue-600/50 duration-300"
                 />
-                <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50 duration-300" onClick={()=>{
-                  setSelectedMobile(el)
-                  setOpenEditModal(true)}}/>
+                <SquarePen
+                  className="text-green-600 cursor-pointer hover:text-green-600/50 duration-300"
+                  onClick={() => {
+                    setSelectedMobile(el);
+                    setOpenEditModal(true);
+                  }}
+                />
                 <Trash2
                   className="text-red-600 cursor-pointer hover:text-red-600/50 duration-300"
                   onClick={() => deletingUser(el.id)}
@@ -127,13 +131,30 @@ import type { IMobile } from "@/lib/types/types";
               </div>
             </div>
             <div className=" grid grid-cols-2 gap-5">
-              <Button variant="outline" onClick={()=>setOpen(false)}>Закрыть</Button>
-              <Button variant="ghost">Редактировать</Button>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Закрыть
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setOpen(false)
+                  setOpenEditModal(true);
+                }}
+              >
+                Редактировать
+              </Button>
             </div>
           </DialogContent>
         </Dialog>
-        <CreateModal openCreateModal={openCreateModal} setOpenCreateModal={setOpenCreateModal}/>
-        <EditModal openEditModal={openEditModal} setOpenEditModal={setOpenEditModal} mobile={selectedMobile}/>
+        <CreateModal
+          openCreateModal={openCreateModal}
+          setOpenCreateModal={setOpenCreateModal}
+        />
+        <EditModal
+          openEditModal={openEditModal}
+          setOpenEditModal={setOpenEditModal}
+          mobile={selectedMobile}
+        />
       </>
     );
   };
