@@ -1,4 +1,9 @@
-import { Controller, type Control } from "react-hook-form";
+import {
+  Controller,
+  type Control,
+  type FieldValues,
+  type Path,
+} from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -12,21 +17,26 @@ interface IOption {
   value: string;
 }
 
-interface IFormSelect {
-  name: string;
-  control: Control;
+interface IFormSelect<T extends FieldValues> {
+  name: Path<T>;
+  control: Control<T>;
   placeholder?: string;
   options: IOption[];
 }
 
-const FormSelect = ({ control, name, placeholder, options }: IFormSelect) => {
+const FormSelect = <T extends FieldValues>({
+  control,
+  name,
+  placeholder,
+  options,
+}: IFormSelect<T>) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field, fieldState }) => (
         <>
-          <Select value={field.value} onValueChange={field.onChange} cl>
+          <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder={placeholder || "Выберите значение"} />
             </SelectTrigger>

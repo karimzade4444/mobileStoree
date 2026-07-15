@@ -1,22 +1,35 @@
-import { Controller, type Control } from "react-hook-form";
+import {
+  Controller,
+  type Control,
+  type FieldValues,
+  type Path,
+} from "react-hook-form";
 import { Input } from "../ui/input";
 
-interface IFormInput {
-  name: string;
-  control: Control;
-  label?: string;
-  placeholder?:string;
+interface IFormInput<T extends FieldValues> {
+  name: Path<T>;
+  control: Control<T>;
+  placeholder?: string;
 }
 
-const FormInput = ({ control, name, placeholder }: IFormInput) => {
+const FormInput = <T extends FieldValues>({
+  control,
+  name,
+  placeholder,
+}: IFormInput<T>) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field, fieldState }) => (
         <>
-          <Input placeholder={placeholder} aria-invalid={!!fieldState.error} {...field} />
-          <p>{fieldState.error?.message || ""}</p>
+          <Input
+            placeholder={placeholder}
+            aria-invalid={!!fieldState.error}
+            {...field}
+          />
+
+          <p className="text-red-500 text-sm">{fieldState.error?.message}</p>
         </>
       )}
     />

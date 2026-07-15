@@ -7,15 +7,16 @@ import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "@/lib/api/api";
-import { createMobileSchema } from "@/lib/schemas/createMobile";
+import { createMobileSchema, type ICreateMobileSchema } from "@/lib/schemas/createMobile";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface ICreateModal {
   openCreateModal: boolean;
   setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
 }
 const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
-  const { control, handleSubmit, reset } = useForm<ICreateMobiles>({
-    resolver: zodResolver(createMobileSchema)
+  const { control, handleSubmit, reset } = useForm<ICreateMobileSchema>({
+    resolver: zodResolver(createMobileSchema),
   });
 
   const queryClient = useQueryClient();
@@ -26,13 +27,13 @@ const CreateModal = ({ openCreateModal, setOpenCreateModal }: ICreateModal) => {
       queryClient.invalidateQueries({
         queryKey: ["getMobiles"],
       });
-reset()
+      reset();
       setOpenCreateModal(false);
     },
   });
-const onSubmit = (data: ICreateMobiles) => {
-  mutate(data);
-};
+  const onSubmit = (data: ICreateMobileSchema) => {
+    mutate(data);
+  };
   return (
     <>
       <Dialog open={openCreateModal} onOpenChange={setOpenCreateModal}>
@@ -141,6 +142,7 @@ const onSubmit = (data: ICreateMobiles) => {
             </div>
             <div className=" grid grid-cols-2 gap-10 mt-5">
               <Button
+              type="button"
                 variant="outline"
                 className="h-10"
                 onClick={() => setOpenCreateModal(false)}
