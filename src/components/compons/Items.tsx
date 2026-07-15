@@ -4,11 +4,13 @@
   import { deleteMobile, getMobiles } from "@/lib/api/api";
  
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import CreateModal from "./CreateModal";
 
   interface ISearch {
     search: string;
+    openCreateModal: boolean;
+    setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
   }
   interface IMobile {
     id: number;
@@ -21,7 +23,8 @@ import CreateModal from "./CreateModal";
     brand: string
   }
 
-  const Items = ({ search }: ISearch) => {
+  
+  const Items = ({ search, openCreateModal, setOpenCreateModal }: ISearch) => {
     const [selectedMobile, setSelectedMobile] = useState<IMobile | null>(null);
     const [open, setOpen] = useState(false);
     

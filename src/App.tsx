@@ -7,8 +7,8 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
 
   return (
     <div>
-   <Top/>
-   <Bottom />
+   <Top setOpenCreateModal={setOpenCreateModal}/>
+   <Bottom openCreateModal={openCreateModal} setOpenCreateModal={setOpenCreateModal}/>
     </div>
   );
 };
