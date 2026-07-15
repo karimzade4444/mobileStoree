@@ -60,7 +60,7 @@ import EditModal from "./EditModal";
                   }}
                   className="text-blue-600 cursor-pointer hover:text-blue-600/50 duration-300"
                 />
-                <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50 duration-300" onClick={()=>setOpenCreateModal(true)}/>
+                <SquarePen className="text-green-600 cursor-pointer hover:text-green-600/50 duration-300" onClick={()=>setOpenEditModal(true)}/>
                 <Trash2
                   className="text-red-600 cursor-pointer hover:text-red-600/50 duration-300"
                   onClick={() => deletingUser(el.id)}

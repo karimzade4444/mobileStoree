@@ -1,9 +1,15 @@
 import { updateMobile } from "@/lib/api/api";
 import type { ICreateMobiles } from "@/lib/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { Dispatch, SetStateAction } from "react";
 
 
-const EditModal = () => {
+interface IEditModal {
+  openCreateModal: boolean;
+  setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
+}
+
+const EditModal = ({openEditModal, setOpenEditModal}:IEditModal) => {
     const queryClient = useQueryClient();
     const { mutate: updatingMobile } = useMutation({
       mutationFn: ({ id, data }: { id: number; data: ICreateMobiles }) =>
