@@ -126,8 +126,8 @@ import { useState } from "react";
               </div>
             </div>
             <div className=" grid grid-cols-2 gap-5">
-              <Button>Закрыть</Button>
-              <Button>Редактировать</Button>
+              <Button variant="outline">Закрыть</Button>
+              <Button variant="ghost">Редактировать</Button>
             </div>
           </DialogContent>
         </Dialog>
