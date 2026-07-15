@@ -24,8 +24,8 @@ import type { IMobile } from "@/lib/types/types";
     
       const queryClient = useQueryClient();
     const { data } = useQuery({
-      queryFn: () => getMobiles(search),
       queryKey: ["getMobiles", search],
+      queryFn: () => getMobiles(search),
     });
     const { mutate: deletingUser } = useMutation({
       mutationFn: deleteMobile,

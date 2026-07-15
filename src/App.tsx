@@ -14,6 +14,7 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
         setOpenCreateModal={setOpenCreateModal}
       />
       <Bottom
+        search={search}
         openCreateModal={openCreateModal}
         setOpenCreateModal={setOpenCreateModal}
       />

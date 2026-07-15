@@ -5,13 +5,14 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 
 
 interface ICreateModal {
+  search: string,
   openCreateModal: boolean;
   setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const Bottom = ({openCreateModal, setOpenCreateModal}:ICreateModal) => {
+const Bottom = ({openCreateModal, setOpenCreateModal, search}:ICreateModal) => {
     
- const [search, setSearch] = useState("");
+ 
   
   return (
     <div className=" grid grid-cols-2 place-items-center gap-10">
