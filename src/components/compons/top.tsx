@@ -24,8 +24,8 @@ const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
 
 const items = [
   { label: "light", value: "light" },
-  { label: "🌙 Темная", value: "dark" },
-  { label: "💻 Системная", value: "system" },
+  { label: "dark", value: "dark" },
+  { label: "system", value: "system" },
 ];
   return (
     <div className="p-15">
