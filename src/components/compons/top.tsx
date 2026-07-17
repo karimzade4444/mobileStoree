@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { Button } from "../ui/button"
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useTheme } from "next-themes";
 
@@ -12,7 +12,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-
 interface ICreateModal {
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
@@ -22,11 +21,11 @@ interface ICreateModal {
 const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
   const { setTheme } = useTheme();
 
-const items = [
-  { label: "light", value: "light" },
-  { label: "dark", value: "dark" },
-  { label: "system", value: "system" },
-];
+  const items = [
+    { label: "light", value: "light" },
+    { label: "dark", value: "dark" },
+    { label: "system", value: "system" },
+  ];
   return (
     <div className="p-15">
       <div className=" flex justify-between items-center ">
@@ -47,7 +46,7 @@ const items = [
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Select onValueChange={(value) => setTheme(value)}>
+        <Select onValueChange={(value) => setTheme(value as string)}>
           <SelectTrigger className="w-80 h-15!">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
@@ -61,10 +60,9 @@ const items = [
             </SelectGroup>
           </SelectContent>
         </Select>
-       
       </div>
     </div>
   );
 };
 
-export default Top
+export default Top;
