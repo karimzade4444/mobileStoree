@@ -5,9 +5,9 @@ export const createMobileSchema = z.object({
 
   name: z.string().min(1, "Введите модель"),
 
-  price: z.coerce.number().min(1, "Введите цену"),
+  price: z.coerce.number<number>().min(1, "Введите цену"),
 
-  storage: z.coerce.number().min(1, "Выберите память"),
+  storage: z.coerce.number<number>().min(1, "Выберите память"),
 
   color: z.string().min(1, "Введите цвет"),
 

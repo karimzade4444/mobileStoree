@@ -7,9 +7,11 @@ import FormSelect from "../form/FormSelect";
 import FormInput from "../form/FormInput";
 import { Button } from "../ui/button";
 import { useForm } from "react-hook-form";
-import { EditMobileSchema, type IEditMobileSchema } from "@/lib/schemas/editMobile";
+import {
+  EditMobileSchema,
+  type IEditMobileSchema,
+} from "@/lib/schemas/editMobile";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 
 interface IEditModal {
   openEditModal: boolean;
@@ -17,55 +19,55 @@ interface IEditModal {
   mobile: IMobile | null;
 }
 
-const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
-    const { control, handleSubmit, reset, clearErrors } =
-      useForm<IEditMobileSchema>({
-        resolver: zodResolver(EditMobileSchema),
-        defaultValues: {
-          brand: "",
-          name: "",
-          price: 0,
-          storage: 0,
-          color: "",
-          logo: "",
-          title: "",
-        },
-      });
-
-    const queryClient = useQueryClient();
-    const { mutate: updatingMobile } = useMutation({
-      mutationFn: ({ id, data }: { id: number; data: ICreateMobiles }) =>
-        updateMobile(id, data),
-
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ["getMobiles"],
-        });
-        reset()
-
-        setOpenEditModal(false);
+const EditModal = ({ openEditModal, setOpenEditModal, mobile }: IEditModal) => {
+  const { control, handleSubmit, reset, clearErrors } =
+    useForm<IEditMobileSchema>({
+      resolver: zodResolver(EditMobileSchema),
+      defaultValues: {
+        brand: "",
+        name: "",
+        price: 0,
+        storage: 0,
+        color: "",
+        logo: "",
+        title: "",
       },
     });
-    useEffect(() => {
-      if (mobile) {
-        reset({
-          brand: mobile.brand,
-          name: mobile.name,
-          price: mobile.price,
-          storage: mobile.storage,
-          color: mobile.color,
-          logo: mobile.logo,
-          title: mobile.title,
-        });
-      }
-    }, [mobile, reset]);
-    const onSubmit = (data: IEditMobileSchema) => {
-     if(!mobile) return;
-      updatingMobile({
-        id: mobile.id,
-        data,
+
+  const queryClient = useQueryClient();
+  const { mutate: updatingMobile } = useMutation({
+    mutationFn: ({ id, data }: { id: number; data: ICreateMobiles }) =>
+      updateMobile(id, data),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["getMobiles"],
       });
-    };
+      reset();
+
+      setOpenEditModal(false);
+    },
+  });
+  useEffect(() => {
+    if (mobile) {
+      reset({
+        brand: mobile.brand,
+        name: mobile.name,
+        price: mobile.price,
+        storage: mobile.storage,
+        color: mobile.color,
+        logo: mobile.logo,
+        title: mobile.title,
+      });
+    }
+  }, [mobile, reset]);
+  const onSubmit = (data: IEditMobileSchema) => {
+    if (!mobile) return;
+    updatingMobile({
+      id: mobile.id,
+      data,
+    });
+  };
   return (
     <>
       <Dialog open={openEditModal} onOpenChange={setOpenEditModal}>
@@ -194,6 +196,6 @@ const EditModal = ({openEditModal, setOpenEditModal, mobile}:IEditModal) => {
       </Dialog>
     </>
   );
-}
+};
 
-export default EditModal
+export default EditModal;

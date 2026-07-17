@@ -3,14 +3,8 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useTheme } from "next-themes";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
+import CustomSelect from "./customSelect";
 
 interface ICreateModal {
   search: string;
@@ -46,20 +40,10 @@ const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Select onValueChange={(value) => setTheme(value as string)}>
-          <SelectTrigger className="w-80 h-15!">
-            <SelectValue placeholder="Theme" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <CustomSelect
+          options={items}
+          onValueChange={(value) => setTheme(value as string)}
+        />
       </div>
     </div>
   );
