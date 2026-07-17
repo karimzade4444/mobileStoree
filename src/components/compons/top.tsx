@@ -23,7 +23,7 @@ const Top = ({ search, setSearch, setOpenCreateModal }: ICreateModal) => {
   const { setTheme } = useTheme();
 
 const items = [
-  { label: "🌞 Светлая", value: "light" },
+  { label: "light", value: "light" },
   { label: "🌙 Темная", value: "dark" },
   { label: "💻 Системная", value: "system" },
 ];
