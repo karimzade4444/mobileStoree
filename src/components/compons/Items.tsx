@@ -92,7 +92,7 @@ import type { IMobile } from "@/lib/types/types";
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent>
             <DialogTitle>Информация о телефоне</DialogTitle>
-            <div>
+            <div className="text-white">
               <div className=" flex justify-center items-center flex-col">
                 <img src={selectedMobile?.logo} alt="" className="w-15" />
                 <p className="pt-3 text-xl">{selectedMobile?.name}</p>
